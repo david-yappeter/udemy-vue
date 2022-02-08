@@ -23,6 +23,10 @@
       <button @click="addCounter()">Add</button>
       <button @click="addCounter(5)">Add 5</button>
       <p>Result: {{ counter }}</p>
+
+      <!-- <input type="text" v-model="name" /> -->
+      <input type="text" v-on:input="setName($event, 'Tester')" />
+      <p>Your name: {{ name }}</p>
     </section>
   </body>
 </html>
