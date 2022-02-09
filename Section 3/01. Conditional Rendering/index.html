@@ -20,12 +20,24 @@
       <h2>My course goals</h2>
       <input type="text" v-model="enteredGoal" @keyup.enter="addGoal($event)" />
       <button @click="addGoal($event)">Add Goal</button>
-      <p v-show="goals.length === 0">
+      <p v-if="goals.length === 0">
         No goals have been added yet - please start adding some!
       </p>
-      <ul v-show="goals.length > 0">
-        <li v-for="goal in goals">{{ goal }}</li>
+      <ul v-else-if="goals.length > 0">
+        <li
+          v-for="(goal, idx) in goals"
+          :key="goal"
+          @click="removeGoal(e, idx)"
+        >
+          <p>{{idx}}. {{ goal }}</p>
+          <input type="text" @click.stop />
+        </li>
       </ul>
+      <!-- <ul>
+        <li v-for="(value, key, idx) in {'A': 1, 'B': 2}">
+          {{idx}}. {{ key }} - {{ value }}
+        </li>
+      </ul> -->
     </section>
   </body>
 </html>
